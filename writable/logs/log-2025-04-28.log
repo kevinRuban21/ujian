@@ -1,0 +1,110 @@
+CRITICAL - 2025-04-28 14:56:49 --> ErrorException: Undefined variable $web
+[Method: GET, Route: dashboardGuru]
+in APPPATH\Views\template_guru.php on line 37.
+ 1 APPPATH\Views\template_guru.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $web', 'C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php', 37)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template_guru', [], true)
+ 5 APPPATH\Controllers\dashboardGuru.php(13): view('template_guru', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\dashboardGuru->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboardGuru))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-28 14:57:22 --> ErrorException: Undefined variable $menu
+[Method: GET, Route: dashboardGuru]
+in APPPATH\Views\template_guru.php on line 74.
+ 1 APPPATH\Views\template_guru.php(74): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $menu', 'C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php', 74)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template_guru', [], true)
+ 5 APPPATH\Controllers\dashboardGuru.php(13): view('template_guru', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\dashboardGuru->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboardGuru))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-28 14:57:52 --> ErrorException: Undefined variable $subjudul
+[Method: GET, Route: dashboardGuru]
+in APPPATH\Views\template_guru.php on line 96.
+ 1 APPPATH\Views\template_guru.php(96): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $subjudul', 'C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php', 96)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template_guru', [], true)
+ 5 APPPATH\Controllers\dashboardGuru.php(14): view('template_guru', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\dashboardGuru->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboardGuru))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-28 14:58:08 --> ErrorException: Undefined variable $admin
+[Method: GET, Route: dashboardGuru]
+in APPPATH\Views\template_guru.php on line 257.
+ 1 APPPATH\Views\template_guru.php(257): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $admin', 'C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php', 257)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template_guru', [], true)
+ 5 APPPATH\Controllers\dashboardGuru.php(15): view('template_guru', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\dashboardGuru->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboardGuru))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-28 14:58:59 --> ErrorException: Undefined variable $submenu
+[Method: GET, Route: dashboardGuru]
+in APPPATH\Views\template_guru.php on line 313.
+ 1 APPPATH\Views\template_guru.php(313): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $submenu', 'C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php', 313)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template_guru', [], true)
+ 5 APPPATH\Controllers\dashboardGuru.php(15): view('template_guru', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\dashboardGuru->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboardGuru))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-28 14:59:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-28 14:59:48 --> ErrorException: Undefined variable $jmlh_siswa
+[Method: GET, Route: dashboardGuru]
+in APPPATH\Views\dashboard_guru.php on line 38.
+ 1 APPPATH\Views\dashboard_guru.php(38): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $jmlh_siswa', 'C:\\xampp\\htdocs\\ujian\\app\\Views\\dashboard_guru.php', 38)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\ujian\\app\\Views\\dashboard_guru.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('dashboard_guru', [], true)
+ 5 APPPATH\Views\template_guru.php(318): view('dashboard_guru')
+ 6 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php')
+ 7 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template_guru', [], true)
+ 9 APPPATH\Controllers\dashboardGuru.php(16): view('template_guru', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\dashboardGuru->index()
+11 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboardGuru))
+12 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-28 15:01:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-04-28 15:01:30 --> ErrorException: Undefined variable $web
+[Method: GET, Route: dashboardGuru]
+in APPPATH\Views\template_guru.php on line 327.
+ 1 APPPATH\Views\template_guru.php(327): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $web', 'C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php', 327)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\ujian\\app\\Views\\template_guru.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('template_guru', [], true)
+ 5 APPPATH\Controllers\dashboardGuru.php(16): view('template_guru', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\dashboardGuru->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboardGuru))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-04-28 15:02:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-28 15:02:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-28 15:02:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-28 15:06:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-28 15:09:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-04-28 15:10:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
