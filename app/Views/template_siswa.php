@@ -220,7 +220,7 @@
                           </div>
                           <div class="u-text">
                             <h4><?= session()->get('nama_siswa') ?></h4>
-                            <p class="text-muted">Siswa</p>
+                            <p class="text-muted">Siswa</p> 
                           </div>
                         </div>
                       </li>

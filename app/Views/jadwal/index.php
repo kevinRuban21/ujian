@@ -42,19 +42,6 @@
                   });
                   </script>';
                 }
-                if(session()->get('delete')){
-                  echo '<div class="alert alert-danger">';
-                  echo session()->get('delete');
-                  echo '</div>';
-                  echo '<script>
-                    $(document).ready(function(){
-                      $(".alert").fadeIn();
-                      setTimeout(function(){
-                          $(".alert").fadeOut();
-                      }, 3000);
-                    });
-                </script>';
-                }
               ?>
                 <table class="display table table-striped table-hover" id="basic-datatables">
                     <thead>
@@ -193,4 +180,15 @@
         });
     });
 </script>
+
+<?php if (session()->getFlashdata('delete')) : ?>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil',
+            text: '<?= session()->getFlashdata('delete'); ?>',
+            timer: 2000,
+        });
+    </script>
+<?php endif; ?>
             

@@ -6,6 +6,27 @@ use CodeIgniter\Model;
 
 class ModelSoal extends Model
 {
+    protected $table = 'tbl_soal';
+
+    protected $primaryKey = 'id_soal';
+
+    protected $useAutoIncrement = true;
+
+    protected $returnType = 'array';
+
+    protected $useSoftDeletes = false;
+
+    protected $allowedFields = [
+        'id_jadwal_ujian', 
+        'soal',  
+        'jawaban',  
+        'a',
+        'b',
+        'c',
+        'd',
+        'e',
+        'bobot',
+    ];
 
     public function InsertData($data)
     {

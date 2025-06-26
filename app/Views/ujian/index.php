@@ -10,50 +10,6 @@
                 </div>
             </div>
             <div class="card-body table-responsive">
-            <?php
-
-                use CodeIgniter\Database\BaseUtils;
-
-                if(session()->get('insert')){
-                  echo '<div class="alert alert-primary">';
-                  echo session()->get('insert');
-                  echo '</div>';
-                  echo '<script>
-                    $(document).ready(function(){
-                      $(".alert").fadeIn();
-                      setTimeout(function(){
-                          $(".alert").fadeOut();
-                      }, 3000);
-                    });
-                  </script>';
-                }
-                if(session()->get('update')){
-                  echo '<div class="alert alert-primary">';
-                  echo session()->get('update');
-                  echo '</div>';
-                  echo '<script>
-                  $(document).ready(function(){
-                    $(".alert").fadeIn();
-                    setTimeout(function(){
-                        $(".alert").fadeOut();
-                    }, 3000);
-                  });
-                  </script>';
-                }
-                if(session()->get('delete')){
-                  echo '<div class="alert alert-danger">';
-                  echo session()->get('delete');
-                  echo '</div>';
-                  echo '<script>
-                    $(document).ready(function(){
-                      $(".alert").fadeIn();
-                      setTimeout(function(){
-                          $(".alert").fadeOut();
-                      }, 3000);
-                    });
-                </script>';
-                }
-              ?>
                 <table class="display table table-striped table-hover" id="basic-datatables">
                     <thead>
                         <tr>
@@ -83,7 +39,12 @@
 
                         foreach($jadwal as $key => $d){ 
                             date_default_timezone_set('Asia/Jayapura');
+                            $waktuSaatIni = date('Y-m-d H:i:s');
+                            $fullWaktuMulai = $d['tgl_ujian'] . ' ' . $d['waktu_mulai'];
+                            $fullWaktuSelesai = $d['tgl_ujian'] . ' ' . $d['waktu_selesai'];
                             $tgl = date('d M Y', strtotime($d['tgl_ujian']));
+                            $mulai = date('H:i', strtotime($d['waktu_mulai']));
+                            $selesai = date('H:i', strtotime($d['waktu_selesai']));
                             $angka = date('l', strtotime($d['tgl_ujian']));
                             $hari = [
                                 'Monday' => 'Senin',
@@ -94,6 +55,10 @@
                                 'Saturday' => 'Sabtu',
                                 'Sunday' => 'Minggu',
                             ];
+                            // Mengubah waktu menjadi objek DateTime untuk perbandingan
+                            $dtWaktuSaatIni = new \DateTime($waktuSaatIni);
+                            $dtFullWaktuMulai = new \DateTime($fullWaktuMulai);
+                            $dtFullWaktuSelesai = new \DateTime($fullWaktuSelesai);
                       ?>
                         <tr>
                             <td><?= $no++ ?></td>
@@ -102,9 +67,15 @@
                             <td><?= $d['kelas'] ?></td>
                             <td><?= $d['mapel'] ?></td>
                             <td><?= $hari[$angka] ?>,<?= $tgl ?></td>
-                            <td><?= date('H:i', strtotime($d['waktu_mulai']))?>-<?= date('H:i', strtotime($d['waktu_selesai']))?></td>
+                            <td><?= $mulai ?>-<?= $selesai ?></td>
                             <td>
-                                <a href="<?= base_url('ujian/ikut/' . $d['id_jadwal_ujian']) ?>" class="btn btn-primary btn-sm my-2"><i class="icon-pencil"></i> Ikut Ujian</a>
+                                <?php if ($dtWaktuSaatIni < $dtFullWaktuMulai) { ?>
+                                    <p>Sesi ujian Belum Dimulai</p>
+                                <?php } else if ($dtWaktuSaatIni > $dtFullWaktuSelesai) { ?>
+                                    <p>Sesi ujian Telah Berakhir</p>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('ujian/ikut/' . $d['id_jadwal_ujian']) ?>" class="btn btn-primary btn-sm my-2"><i class="icon-pencil"></i> Ikut Ujian</a>
+                                <?php } ?>
                             </td>
                         </tr>
                       <?php } ?>

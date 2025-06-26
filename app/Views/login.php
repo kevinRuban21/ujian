@@ -1,6 +1,11 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <?php 
+        $db = \Config\Database::connect();
+        $web = $db->table('tbl_sekolah')->where('id', 1)->get()->getRowArray();
+
+    ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ujian | <?= $judul ?></title>
@@ -33,8 +38,9 @@
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
             <?php echo form_open('Auth/CekLogin') ?>
-                <div class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                    <p class="lead fw-normal mb-0 me-3 mb-3">Ujian Online</p>
+                <div class="text-center justify-content-center justify-content-lg-start">
+                    <p class="lead fw-normal mb-0">Sistem <span class="fw-bold">Ujian</span> Berbasis <span class="fw-bold">Online</span></p>
+                    <p class="lead fw-normal"><?= $web['nama_sekolah'] ?></p>
                 </div>
 
                 <?php
@@ -73,7 +79,7 @@
                 </div>
 
                 <div class="text-center text-lg-start mt-4 pt-2">
-                    <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+                    <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-md"
                     style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                 </div>
 

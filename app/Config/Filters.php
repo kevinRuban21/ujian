@@ -126,6 +126,7 @@ class Filters extends BaseFilters
                     'Home', 'Home/*',
                     'dashboardSiswa', 'dashboardSiswa/*',
                     'ujian', 'ujian/*',
+                    'hasil', 'hasil/*',
                 ]
             ],
         ],

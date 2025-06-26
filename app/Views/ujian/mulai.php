@@ -28,10 +28,21 @@
                 ->get()->getResultArray();
 ?>
 
+<style>
+    .answered {
+        background-color: #28a745; /* Green */
+        color: #fff !important;
+        border-color: #28a745;
+    }
+</style>
+
 <div class="col-md-12">
 	<div class="card">
-		<div class="card-header">
+		<div class="card-header d-flex">
 			<h4 class="card-title">Soal Ujian</h4>
+            <div class="card-tools ms-auto">
+                <span id="countdown" class="h5" style="font-weight: bold;"></span>
+            </div>
 		</div>
 		<div class="card-body">
 			<div class="row">
@@ -39,7 +50,7 @@
                     <ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
                         <?php $no=1; foreach ($soal as $key => $d) { ?>
                             <li class="nav-item">
-                                <a class="nav-link <?= $no == '1' ? 'active' : ''  ?>" id="pills-<?= $d['id_soal'] ?>-tab" data-bs-toggle="pill" href="#soal<?= $d['id_soal'] ?>" role="tab" aria-controls="pills-<?= $d['id_soal'] ?>"><?= $no++ ?></a>
+                                <a class="nav-link nav-soal<?= $d['id_soal'] ?> <?= $no == '1' ? 'active' : ''  ?>" id="pills-<?= $d['id_soal'] ?>-tab" data-bs-toggle="pill" href="#soal<?= $d['id_soal'] ?>" role="tab" data-qId="<?= $d['id_soal'] ?>" aria-controls="pills-<?= $d['id_soal'] ?>"><?= $no++ ?></a>
                             </li>
                         <?php } ?>
                     </ul>
@@ -117,4 +128,45 @@
                 }
             });
         }
+    </script>
+
+    
+    <script>
+        // Tanggal target (ganti dengan tanggal yang Anda inginkan)
+        // Format: "Month Day, Year HH:MM:SS"
+        const targetDate = new Date("<?= $ujian['tgl_ujian'] ?>, <?= $ujian['waktu_selesai'] ?>").getTime();
+
+        // Dapatkan elemen HTML untuk menampilkan countdown
+        const countdownElement = document.getElementById("countdown");
+
+        // Fungsi untuk memperbarui countdown setiap detik
+        const updateCountdown = () => {
+            // Dapatkan waktu saat ini
+            const now = new Date().getTime();
+
+            // Hitung selisih waktu
+            const distance = targetDate - now;
+
+            // Jika countdown sudah selesai
+            if (distance < 0) {
+                countdownElement.innerHTML = "Waktu Habis!";
+                document.getElementById('input_jawaban_form').submit();
+                clearInterval(countdownInterval); // Hentikan interval
+                return;
+            }
+
+            // Konversi milidetik ke hari, jam, menit, dan detik
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Tampilkan hasil di elemen HTML
+            countdownElement.innerHTML = `${hours} : ${minutes} : ${seconds}`;
+        };
+
+        // Panggil fungsi updateCountdown setiap detik
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        // Panggil sekali saat pertama kali dimuat untuk menghindari jeda awal
+        updateCountdown();
     </script>

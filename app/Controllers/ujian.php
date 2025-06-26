@@ -78,7 +78,7 @@ class ujian extends BaseController
 
     public function mulai($id_jadwal_ujian)
     {
-        if (session()->getFlashdata('success')) {
+        // if (session()->getFlashdata('success')) {
             $data = [
                 'judul' => 'Ujian',
                 'subjudul' => 'Ujian',
@@ -90,89 +90,11 @@ class ujian extends BaseController
             ];
             return view('template_siswa', $data);
 
-        } else{
-            session()->setFlashdata('warning', 'Token Wajib diisi !!!');
-            return redirect()->to('ujian/ikut/' . $id_jadwal_ujian);
-        }
+        // } else{
+        //     session()->setFlashdata('warning', 'Token Wajib diisi !!!');
+        //     return redirect()->to('ujian/ikut/' . $id_jadwal_ujian);
+        // }
     }
-
-    // public function selesai()
-    // {
-    //     if ($this->request->getMethod() === 'POST') {
-    //         // --- DEBUGGING START ---
-    //         // echo '<pre>'; // Tag <pre> agar output lebih mudah dibaca di browser
-    //         // echo '<h3>Data POST yang Diterima:</h3>';
-    //         // print_r($this->request->getPost()); // Baris ini yang penting
-    //         // echo '</pre>';
-    //         // die('Eksekusi berhenti untuk debugging. Lihat output di atas.'); // Hentikan eksekusi kode selanjutnya
-    //         // --- DEBUGGING END ---
-
-    //         $jawabanModel = new \App\Models\ModelJawaban(); // Gunakan nama model Anda
-    //         $jawabanInput = $this->request->getPost('jawaban'); // Ambil hanya data 'jawaban'
-    //         $dataToSave = [];
-
-    //         $id_siswa = session()->get('id_siswa');
-    //         if (empty($id_siswa)) {
-    //             session()->setFlashdata('error', 'ID Siswa tidak ditemukan. Mohon login kembali.');
-    //             return redirect()->back();
-    //         }
-
-    //         // --- DEBUGGING BARU: Periksa $jawabanInput sebelum loop ---
-    //         // UNCOMMENT BARIS DI BAWAH INI untuk melihat data POST 'jawaban'
-    //         // echo '<pre>';
-    //         // echo '<h3>Data $jawabanInput (dari $_POST[\'jawaban\']):</h3>';
-    //         // var_dump($jawabanInput);
-    //         // echo '</pre>';
-    //         // die('Debugging: Periksa $jawabanInput.');
-    //         // --- END DEBUGGING ---
-
-    //         if ($jawabanInput) { // Pastikan ada data jawaban yang dikirim
-    //             foreach ($jawabanInput as $soalId => $soalData) {
-
-    //                 $pilihan_jawaban = NULL;
-    //                 // Akses 'id_soal' dan 'pilihan' dari $soalData
-    //                 $id_soal = $soalData['id_soal'] ?? NULL; // Gunakan null coalescing untuk keamanan
-    //                 $pilihan_jawaban = $soalData['pilihan'] ?? NULL;
-
-    //                 // Logika baru: Jika pilihan_jawaban NULL, set ke 0
-    //                 if ($pilihan_jawaban === NULL) {
-    //                     $pilihan_jawaban = 'kosong'; // Setel ke 0 jika tidak ada pilihan jawaban
-    //                 }
-
-    //                 if ($pilihan_jawaban !== NULL) {
-    //                     $dataToSave[] = [
-    //                         'id_soal'     => $id_soal,
-    //                         'id_siswa'    => $id_siswa,
-    //                         'jawaban'     => $pilihan_jawaban,
-    //                     ];
-    //                 }
-
-    //                 // echo '<pre>';
-    //                 // var_dump($dataToSave);
-    //                 // echo '</pre>';
-    //                 // die('Debugging: Data siap disimpan.');
-    //             }
-    //         }
-
-    //         // ... (lanjutkan dengan insertBatch dan redirect seperti sebelumnya)
-    //         if (!empty($dataToSave)) {
-    //             $saved = $jawabanModel->insertBatch($dataToSave);
-
-    //             if ($saved) {
-    //                 session()->setFlashdata('success', 'Jawaban berhasil disimpan!');
-    //                 return redirect()->to(base_url('ujian')); // Arahkan ke halaman hasil
-    //             } else {
-    //                 session()->setFlashdata('error', 'Terjadi kesalahan saat menyimpan jawaban Anda. Silakan coba lagi.');
-    //                 return redirect()->back()->withInput();
-    //             }
-    //         } else {
-    //             session()->setFlashdata('warning', 'Tidak ada jawaban yang ditemukan untuk disimpan.');
-    //             return redirect()->to(base_url('ujian'));
-    //         }
-    //     } else {
-    //         return redirect()->back()->with('error', 'Akses tidak valid.');
-    //     }
-    // }
 
     public function selesai()
     {
@@ -181,7 +103,7 @@ class ujian extends BaseController
             // Inisialisasi model Jawaban
             $jawabanModel = new \App\Models\ModelJawaban(); 
             // Mengambil semua data 'jawaban' dari POST request
-            $jawabanInput = $this->request->getPost('jawaban'); 
+            $jawabanInput = $this->request->getPost('jawaban');
             // Array untuk menyimpan data jawaban yang akan disimpan ke database
             $dataToSave = [];
 
@@ -227,7 +149,7 @@ class ujian extends BaseController
                     // Cek apakah penyimpanan berhasil
                     if ($saved) {
                         session()->setFlashdata('success', 'Jawaban berhasil disimpan!');
-                        return redirect()->to(base_url('ujian')); // Arahkan ke halaman hasil
+                        return redirect()->to(base_url('hasil')); // Arahkan ke halaman hasil
                     } else {
                         // Jika insertBatch mengembalikan false tanpa exception
                         session()->setFlashdata('error', 'Terjadi kesalahan tidak terduga saat menyimpan jawaban Anda. Silakan coba lagi. (Model insertBatch mengembalikan false)');

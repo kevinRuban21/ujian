@@ -6,6 +6,20 @@ use CodeIgniter\Model;
 
 class ModelJadwalUjian extends Model
 {
+    protected $table      = 'tbl_jadwal_ujian';
+    protected $primaryKey = 'id_jadwal_ujian';
+    protected $allowedFields = ['id_jadwal', 'jenis_ujian', 'tgl_ujian', 'waktu_mulai', 'waktu_selesai', 'token'];
+
+    public function getJadwalWithMataPelajaran($idJadwal = null)
+    {
+        $builder = $this->db->table($this->table);
+        $builder->select('tbl_jadwal_ujian.*, id_jadwal.id_mapel');
+        $builder->join('tbl_jadwal_pelajaran', 'tbl_jadwal_pelajaran.id_jadwal = tbl_jadwal_ujian.id_jadwal');
+        if ($idJadwal) {
+            $builder->where('tbl_jadwal_ujian.id_jadwal', $idJadwal);
+        }
+        return $builder->get()->getResultArray();
+    }
 
     public function InsertData($data)
     {

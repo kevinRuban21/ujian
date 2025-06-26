@@ -105,6 +105,7 @@
                             ->join('tbl_jurusan', 'tbl_jurusan.id_jurusan=tbl_jadwal_pelajaran.id_jurusan', 'LEFT')
                             ->join('tbl_ta', 'tbl_ta.id_ta=tbl_jadwal_pelajaran.id_ta', 'LEFT')
                             ->where('tbl_jadwal_pelajaran.id_ta', $ta_aktif['id_ta'])
+                            ->where('tbl_soal.id_jadwal_ujian', $jadwal['id_jadwal_ujian'])
                             ->where('tbl_jadwal_pelajaran.id_guru', session()->get('id_guru'))
                             ->get()->getResultArray();
                         foreach($soal as $key => $d){ 
