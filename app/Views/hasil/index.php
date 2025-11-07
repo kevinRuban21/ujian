@@ -34,7 +34,7 @@
                             ->join('tbl_ta', 'tbl_ta.id_ta=tbl_jadwal_pelajaran.id_ta', 'LEFT')
                             ->where('tbl_jadwal_pelajaran.id_ta', $ta_aktif['id_ta'])
                             ->where('tbl_jadwal_pelajaran.id_kelas', session()->get('id_kelas'))
-                            ->get()->getResultArray();   
+                            ->get()->getResultArray();
 
                         foreach($jadwal as $key => $d){ 
 
@@ -44,6 +44,22 @@
                                 ->where('tbl_soal.id_jadwal_ujian', $d['id_jadwal_ujian'])
                                 ->where('tbl_jawaban.id_siswa', session()->get('id_siswa'))
                                 ->countAllResults();
+                            $jawaban  = $db->table('tbl_soal')
+                                ->join('tbl_jawaban', 'tbl_jawaban.id_soal=tbl_soal.id_soal', 'LEFT')
+                                ->where('tbl_jawaban.id_siswa', session()->get('id_siswa'))
+                                ->where('tbl_soal.id_jadwal_ujian', $d['id_jadwal_ujian'])
+                                ->get()->getResultArray();
+
+                            $jumlahBenar = 0;
+                            $jumlahSalah = 0;
+                            
+                            foreach ($jawaban as $key => $j) {
+                              if ($j['jawaban'] == $j['kunci_jawaban']) {
+                                $jumlahBenar++;
+                              }else{
+                                $jumlahSalah++;
+                              }
+                            }
                         ?>
                         <tr>
                             <td><?= $no++ ?></td>

@@ -96,3 +96,268 @@ WARNING - 2025-06-26 14:21:54 --> [DEPRECATED] Creation of dynamic property App\
  4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-06-26 15:02:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-26 15:02:05 --> [DEPRECATED] Creation of dynamic property App\Controllers\hasil::$ModelTahunAjaran is deprecated in APPPATH\Controllers\hasil.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\hasil->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-26 15:02:05 --> mysqli_sql_exception: Not unique table/alias: 'tbl_jadwal_ujian' in C:\xampp\htdocs\ujian\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\ujian\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `tbl_soa...', 0)
+#1 C:\xampp\htdocs\ujian\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_soa...')
+#2 C:\xampp\htdocs\ujian\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_soa...')
+#3 C:\xampp\htdocs\ujian\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_soa...', Array, false)
+#4 C:\xampp\htdocs\ujian\system\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ujian\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ujian\app\Controllers\hasil.php(39): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ujian\system\CodeIgniter.php(933): App\Controllers\hasil->index()
+#8 C:\xampp\htdocs\ujian\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\hasil))
+#9 C:\xampp\htdocs\ujian\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ujian\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ujian\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ujian\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-26 15:02:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Not unique table/alias: 'tbl_jadwal_ujian'
+[Method: GET, Route: hasil]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`', [], false)
+ 2 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\hasil.php(39): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\hasil->index()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\hasil))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-26 15:02:05 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Not unique table/alias: 'tbl_jadwal_ujian'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`', [], false)
+ 4 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\hasil.php(39): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\hasil->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\hasil))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-26 15:02:05 --> [Caused by] mysqli_sql_exception: Not unique table/alias: 'tbl_jadwal_ujian'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`', [], false)
+ 5 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\hasil.php(39): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\hasil->index()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\hasil))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-06-26 15:07:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-26 15:07:16 --> [DEPRECATED] Creation of dynamic property App\Controllers\hasil::$ModelTahunAjaran is deprecated in APPPATH\Controllers\hasil.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\hasil->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-26 15:07:16 --> mysqli_sql_exception: Not unique table/alias: 'tbl_jadwal_ujian' in C:\xampp\htdocs\ujian\system\Database\MySQLi\Connection.php:308
+Stack trace:
+#0 C:\xampp\htdocs\ujian\system\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `tbl_soa...', 0)
+#1 C:\xampp\htdocs\ujian\system\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_soa...')
+#2 C:\xampp\htdocs\ujian\system\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_soa...')
+#3 C:\xampp\htdocs\ujian\system\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_soa...', Array, false)
+#4 C:\xampp\htdocs\ujian\system\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\ujian\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\ujian\app\Controllers\hasil.php(39): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\ujian\system\CodeIgniter.php(933): App\Controllers\hasil->index()
+#8 C:\xampp\htdocs\ujian\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\hasil))
+#9 C:\xampp\htdocs\ujian\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\ujian\system\Boot.php(312): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\ujian\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\ujian\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-26 15:07:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Not unique table/alias: 'tbl_jadwal_ujian'
+[Method: GET, Route: hasil]
+in SYSTEMPATH\Database\BaseConnection.php on line 676.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`', [], false)
+ 2 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\hasil.php(39): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\hasil->index()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\hasil))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-26 15:07:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Not unique table/alias: 'tbl_jadwal_ujian'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 313.
+ 1 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`', [], false)
+ 4 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\hasil.php(39): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\hasil->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\hasil))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-26 15:07:16 --> [Caused by] mysqli_sql_exception: Not unique table/alias: 'tbl_jadwal_ujian'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 308.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(308): mysqli->query('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(722): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(636): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1629): CodeIgniter\Database\BaseConnection->query('SELECT `tbl_soal`.*, `tbl_jadwal_ujian`.`id_jadwal_ujian`, `tbl_jadwal_pelajaran`.`id_mapel`, `tbl_mapel`.`mapel`, `tbl_jawaban`.`id_soal`
+FROM `tbl_soal`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal_ujian` = `tbl_soal`.`id_jadwal_ujian`
+JOIN `tbl_jadwal_ujian` ON `tbl_jadwal_ujian`.`id_jadwal` = `tbl_jadwal_pelajaran`.`id_jadwal`
+JOIN `tbl_jadwal_pelajaran` ON `tbl_jadwal_pelajaran`.`id_mapel` = `tbl_mapel`.`id_mapel`
+JOIN `tbl_jawaban` ON `tbl_jawaban`.`id_soal` = `tbl_soal`.`id_soal`', [], false)
+ 5 SYSTEMPATH\Model.php(275): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\hasil.php(39): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\hasil->index()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\hasil))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-06-26 15:08:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-26 15:08:58 --> [DEPRECATED] Creation of dynamic property App\Controllers\hasil::$ModelTahunAjaran is deprecated in APPPATH\Controllers\hasil.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\hasil->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-06-26 15:09:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-26 15:09:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\ujian::$ModelTahunAjaran is deprecated in APPPATH\Controllers\ujian.php on line 15.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\ujian->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-06-26 15:09:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\ujian::$ModelJadwalUjian is deprecated in APPPATH\Controllers\ujian.php on line 16.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\ujian->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-06-26 15:09:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\ujian::$ModelSoal is deprecated in APPPATH\Controllers\ujian.php on line 17.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\ujian->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2025-06-26 15:09:10 --> [DEPRECATED] Creation of dynamic property App\Controllers\ujian::$ModelToken is deprecated in APPPATH\Controllers\ujian.php on line 19.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\ujian->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-06-26 15:09:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-26 15:09:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\hasil::$ModelTahunAjaran is deprecated in APPPATH\Controllers\hasil.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\hasil->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2025-06-26 15:10:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-26 15:10:22 --> [DEPRECATED] Creation of dynamic property App\Controllers\hasil::$ModelTahunAjaran is deprecated in APPPATH\Controllers\hasil.php on line 12.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\hasil->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(312): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

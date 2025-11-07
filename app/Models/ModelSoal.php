@@ -19,7 +19,7 @@ class ModelSoal extends Model
     protected $allowedFields = [
         'id_jadwal_ujian', 
         'soal',  
-        'jawaban',  
+        'kunci_jawaban',  
         'a',
         'b',
         'c',

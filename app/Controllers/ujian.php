@@ -169,7 +169,7 @@ class ujian extends BaseController
 
             } else {
                 // Jika tidak ada jawaban yang ditemukan untuk disimpan
-                session()->setFlashdata('warning', 'Tidak ada jawaban yang ditemukan untuk disimpan.');
+                session()->setFlashdata('error', 'Tidak ada jawaban yang ditemukan untuk disimpan.');
                 return redirect()->to(base_url('ujian'));
             }
         } else {

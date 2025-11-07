@@ -14,36 +14,36 @@ class hasil extends BaseController
 
     public function index(): string
     {
-        $idPengguna = session()->get('id_siswa');
+        // $idPengguna = session()->get('id_siswa');
 
-        $soalModel = new ModelSoal();
-        $jawabanPesertaModel = new ModelJawaban();
-        $jadwalUjianModel = new ModelJadwalUjian();
+        // $soalModel = new ModelSoal();
+        // $jawabanPesertaModel = new ModelJawaban();
+        // $jadwalUjianModel = new ModelJadwalUjian();
 
          // Ambil semua soal dan kunci jawabannya
-        $dataSoal = $soalModel->findAll();
-        $kunciJawaban = [];
-        foreach ($dataSoal as $soal) {
-            $kunciJawaban[$soal['id_soal']] = $soal['jawaban'];
-        }
+        // $dataSoal = $soalModel->findAll();
+        // $kunciJawaban = [];
+        // foreach ($dataSoal as $soal) {
+        //     $kunciJawaban[$soal['id_soal']] = $soal['kunci_jawaban'];
+        // }
 
         // Ambil jawaban peserta untuk pengguna ini
-        $jawabanPeserta = $jawabanPesertaModel->where('id_siswa', $idPengguna)->findAll();
+        // $jawabanPeserta = $jawabanPesertaModel->where('id_siswa', $idPengguna)->findAll();
 
-        $jumlahBenar = 0;
-        $jumlahSalah = 0;
+        // $jumlahBenar = 0;
+        // $jumlahSalah = 0;
 
-        foreach ($jawabanPeserta as $jawaban) {
-            $idSoal = $jawaban['id_soal'];
-            $jawabanDipilih = $jawaban['jawaban'];
+        // foreach ($jawabanPeserta as $jawaban) {
+        //     $idSoal = $jawaban['id_soal'];
+        //     $jawabanDipilih = $jawaban['jawaban'];
 
-            // Bandingkan jawaban peserta dengan kunci jawaban
-            if (isset($kunciJawaban[$idSoal]) && strtoupper($jawabanDipilih) === strtoupper($kunciJawaban[$idSoal])) {
-                $jumlahBenar++;
-            } else {
-                $jumlahSalah++;
-            }
-        }
+        //     // Bandingkan jawaban peserta dengan kunci jawaban
+        //     if (isset($kunciJawaban[$idSoal]) && strtoupper($jawabanDipilih) === strtoupper($kunciJawaban[$idSoal])) {
+        //         $jumlahBenar++;
+        //     } else {
+        //         $jumlahSalah++;
+        //     }
+        // }
 
         $data = [
             'judul' => 'Hasil Ujian',
@@ -52,9 +52,9 @@ class hasil extends BaseController
             'submenu' => 'hasil',
             'page' => 'hasil/index',
             'ta_aktif' => $this->ModelTahunAjaran->TaAktif(),
-            'jumlahBenar' => $jumlahBenar,
-            'jumlahSalah' => $jumlahSalah,
-            'totalSoal'   => count($dataSoal),
+            // 'jumlahBenar' => $jumlahBenar,
+            // 'jumlahSalah' => $jumlahSalah,
+            // 'totalSoal'   => count($dataSoal),
         ];
         return view('template_siswa', $data);
     }

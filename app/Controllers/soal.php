@@ -138,7 +138,7 @@ class soal extends BaseController
         $data = [
             'id_jadwal_ujian' => $id_jadwal_ujian,
             'soal' => $soal,
-            'jawaban' => $jawaban,
+            'kunci_jawaban' => $jawaban,
             'a' => $a,
             'b' => $b,
             'c' => $c,

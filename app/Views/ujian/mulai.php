@@ -23,7 +23,7 @@
 <?php $no=1; 
     $db = \Config\Database::connect();
     $soal = $db->table('tbl_soal')
-                ->join('tbl_jadwal_ujian', 'tbl_jadwal_ujian.id_jadwal=tbl_soal.id_jadwal_ujian', 'LEFT')
+                ->join('tbl_jadwal_ujian', 'tbl_jadwal_ujian.id_jadwal_ujian=tbl_soal.id_jadwal_ujian', 'LEFT')
                 ->where('tbl_soal.id_jadwal_ujian', $ujian['id_jadwal_ujian'])
                 ->get()->getResultArray();
 ?>
@@ -50,7 +50,7 @@
                     <ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
                         <?php $no=1; foreach ($soal as $key => $d) { ?>
                             <li class="nav-item">
-                                <a class="nav-link nav-soal<?= $d['id_soal'] ?> <?= $no == '1' ? 'active' : ''  ?>" id="pills-<?= $d['id_soal'] ?>-tab" data-bs-toggle="pill" href="#soal<?= $d['id_soal'] ?>" role="tab" data-qId="<?= $d['id_soal'] ?>" aria-controls="pills-<?= $d['id_soal'] ?>"><?= $no++ ?></a>
+                                <a class="nav-link nav-soal-<?= $d['id_soal'] ?> <?= $no == '1' ? 'active' : ''  ?>" id="pills-<?= $d['id_soal'] ?>-tab" data-bs-toggle="pill" href="#soal<?= $d['id_soal'] ?>" role="tab" data-qId="<?= $d['id_soal'] ?>" aria-controls="pills-<?= $d['id_soal'] ?>"><?= $no++ ?></a>
                             </li>
                         <?php } ?>
                     </ul>
@@ -60,39 +60,38 @@
                         <?php $no=1; foreach ($soal as $key => $d) : ?>
                             <div class="tab-pane question-item fade <?= $no == '1' ? 'show active' : ''  ?>" id="soal<?= $d['id_soal'] ?>" role="tabpanel" aria-labelledby="pills-<?= $d['id_soal'] ?>-tab">
                                 <?php $no++ ?>
-                            <form id="input_jawaban_form" action="<?= base_url('ujian/selesai') ?>" method="POST">
+                            <form id="input_jawaban_form" action="<?= base_url('ujian/selesai/' . $d['id_jadwal']) ?>" method="POST">
                                 <p><?= $d['soal'] ?></p>
+
+                                <!-- Hidden input untuk ID Soal, CUKUP SATU PER SOAL -->
+                                <input type="hidden" name="jawaban[<?= $d['id_soal'] ?>][id_soal]" value="<?= $d['id_soal'] ?>">
+
                                 <div class="form-check">
-                                    <input type="hidden" name="jawaban[<?= $d['id_soal'] ?>][id_soal]" value="<?= $d['id_soal'] ?>">
-                                    <input class="form-check-input" type="radio" value="a" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_a">
+                                    <input class="form-check-input" type="radio" value="a" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_a" onchange="markAnswered(<?= $d['id_soal'] ?>)">
                                     <label class="form-check-label" for="flexRadioDefault1_<?= $d['id_soal'] ?>_a">
                                         A : <?= $d['a'] ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="hidden" name="jawaban[<?= $d['id_soal'] ?>][id_soal]" value="<?= $d['id_soal'] ?>">
-                                    <input class="form-check-input" type="radio" value="b" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_b">
+                                    <input class="form-check-input" type="radio" value="b" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_b" onchange="markAnswered(<?= $d['id_soal'] ?>)">
                                     <label class="form-check-label" for="flexRadioDefault1_<?= $d['id_soal'] ?>_b">
                                         B : <?= $d['b'] ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="hidden" name="jawaban[<?= $d['id_soal'] ?>][id_soal]" value="<?= $d['id_soal'] ?>">
-                                    <input class="form-check-input" type="radio" value="c" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_c">
+                                    <input class="form-check-input" type="radio" value="c" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_c" onchange="markAnswered(<?= $d['id_soal'] ?>)">
                                     <label class="form-check-label" for="flexRadioDefault1_<?= $d['id_soal'] ?>_c">
                                         C : <?= $d['c'] ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="hidden" name="jawaban[<?= $d['id_soal'] ?>][id_soal]" value="<?= $d['id_soal'] ?>">
-                                    <input class="form-check-input" type="radio" value="d" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_d">
+                                    <input class="form-check-input" type="radio" value="d" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_d" onchange="markAnswered(<?= $d['id_soal'] ?>)">
                                     <label class="form-check-label" for="flexRadioDefault_<?= $d['id_soal'] ?>_d">
                                         D : <?= $d['d'] ?>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input type="hidden" name="jawaban[<?= $d['id_soal'] ?>][id_soal]" value="<?= $d['id_soal'] ?>">
-                                    <input class="form-check-input" type="radio" value="e" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_e">
+                                    <input class="form-check-input" type="radio" value="e" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_e" onchange="markAnswered(<?= $d['id_soal'] ?>)">
                                     <label class="form-check-label" for="flexRadioDefault1_<?= $d['id_soal'] ?>_e">
                                         E : <?= $d['e'] ?>
                                     </label>
@@ -109,6 +108,16 @@
         </form>
 	</div>
 </div>
+
+    <script>
+        function markAnswered(soalId) {
+            // Menggunakan querySelector untuk menemukan elemen navigasi dengan class yang spesifik
+            const navLink = document.querySelector(`.nav-soal-${soalId}`);
+            if (navLink) {
+                navLink.classList.add('answered'); // Menambahkan kelas 'answered'
+            }
+        }
+    </script>
 
     <script>
         function confirmSubmission() {
