@@ -7,27 +7,27 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label>Soal</label>
-                        <textarea name="soal" class="form-control"></textarea>
+                        <textarea id="summernote" name="soal" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Jawaban A</label>
-                        <textarea name="a" class="form-control"></textarea>
+                        <textarea id="summernote_a" name="a" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Jawaban B</label>
-                        <textarea name="b" class="form-control"></textarea>
+                        <textarea id="summernote_b" name="b" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Jawaban C</label>
-                        <textarea name="c" class="form-control"></textarea>
+                        <textarea id="summernote_c" name="c" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Jawaban D</label>
-                        <textarea name="d" class="form-control"></textarea>
+                        <textarea id="summernote_d" name="d" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Jawaban E</label>
-                        <textarea name="e" class="form-control"></textarea>
+                        <textarea id="summernote_e" name="e" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Kunci Jawaban</label>
@@ -41,10 +41,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Bobot</label>
-                        <input name="bobot" type="number" class="form-control" placeholder="Bobot">
-                    </div>
-                    <div class="form-group">
                         <input name="id_jadwal_ujian" class="form-control" value="<?= $soal['id_jadwal_ujian'] ?>" type="hidden">
                     </div>
                     <div class="card-action">
@@ -55,6 +51,83 @@
             </form>
           </div>
 </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote').summernote({
+                height: 300,
+                callbacks: {
+                    onImageUpload: function(files) {
+                        uploadImage(files[0]);
+                    }
+                }
+            });
+        });
+
+        function uploadImage(soal) {
+            var data = new FormData();
+            data.append("soal", soal); // 'file' adalah nama field di PHP/CI4
+
+            // Mengirim gambar ke endpoint CI4
+            $.ajax({
+                url: '<?= base_url('soal/summernote') ?>', // Ganti dengan path Controller/Method Anda
+                cache: false,
+                contentType: false,
+                processData: false,
+                data: data,
+                type: "POST",
+                success: function(response) {
+                    // Setelah server menyimpan gambar, server mengembalikan URL gambar
+                    var url = response.url; 
+                    // Sisipkan URL gambar ke Summernote
+                    $('#summernote').summernote('insertImage', url);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote_a').summernote({
+                height: 150,
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote_b').summernote({
+                height: 150,
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote_c').summernote({
+                height: 150,
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote_d').summernote({
+                height: 150,
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#summernote_e').summernote({
+                height: 150,
+            });
+        });
+    </script>
 
         <script>
           $(document).ready(function() {
@@ -89,6 +162,4 @@
                 });
             });
         });
-
-        
     </script>

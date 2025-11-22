@@ -46,7 +46,7 @@
 		</div>
 		<div class="card-body">
 			<div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 col-lg-3 col-sm-12">
                     <ul class="nav nav-pills nav-secondary" id="pills-tab" role="tablist">
                         <?php $no=1; foreach ($soal as $key => $d) { ?>
                             <li class="nav-item">
@@ -55,13 +55,13 @@
                         <?php } ?>
                     </ul>
 			    </div>
-                <div class="col-md-9">
+                <div class="col-md-9 col-lg-9 col-sm-12">
                     <div class="tab-content mt-2 mb-3" id="pills-tabContent">
                         <?php $no=1; foreach ($soal as $key => $d) : ?>
                             <div class="tab-pane question-item fade <?= $no == '1' ? 'show active' : ''  ?>" id="soal<?= $d['id_soal'] ?>" role="tabpanel" aria-labelledby="pills-<?= $d['id_soal'] ?>-tab">
                                 <?php $no++ ?>
                             <form id="input_jawaban_form" action="<?= base_url('ujian/selesai/' . $d['id_jadwal']) ?>" method="POST">
-                                <p><?= $d['soal'] ?></p>
+                                <p style="width: 100%;"><?= $d['soal'] ?></p>
 
                                 <!-- Hidden input untuk ID Soal, CUKUP SATU PER SOAL -->
                                 <input type="hidden" name="jawaban[<?= $d['id_soal'] ?>][id_soal]" value="<?= $d['id_soal'] ?>">
@@ -69,7 +69,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" value="a" name="jawaban[<?= $d['id_soal'] ?>][pilihan]" id="flexRadioDefault1_<?= $d['id_soal'] ?>_a" onchange="markAnswered(<?= $d['id_soal'] ?>)">
                                     <label class="form-check-label" for="flexRadioDefault1_<?= $d['id_soal'] ?>_a">
-                                        A : <?= $d['a'] ?>
+                                        <p>A : <?= $d['a'] ?></p>
                                     </label>
                                 </div>
                                 <div class="form-check">

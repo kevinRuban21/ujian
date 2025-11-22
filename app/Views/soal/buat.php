@@ -113,7 +113,7 @@
                         <tr>
                             <td><?= $no++ ?></td>
                             <td><?= $d['soal'] ?></td>
-                            <td class="text-uppercase"><?= $d['jawaban'] ?></td>
+                            <td class="text-uppercase"><?= $d['kunci_jawaban'] ?></td>
                             <td><?= $d['bobot'] ?></td>
                             <td>
                                 <a href="<?= base_url('soal/edit/' . $d['id_soal']) ?>" class="btn btn-warning btn-sm my-2"><i class="icon-pencil"></i> Edit Data</a>

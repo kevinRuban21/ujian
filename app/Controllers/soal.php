@@ -57,6 +57,55 @@ class soal extends BaseController
         return view('template_guru', $data);
     }
 
+    public function summernote()
+    {
+        $validationRule = [
+            'soal' => [
+                'label' => 'Image File',
+                'rules' => 'uploaded[soal]'
+                       . '|is_image[soal]'
+                       . '|mime_in[soal,image/jpg,image/jpeg,image/gif,image/png]'
+                       . '|max_size[soal,2048]', // Max 2MB
+            ],
+        ];
+
+        if (! $this->validate($validationRule)) {
+            // Gagal validasi
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => 'Gagal mengunggah gambar: ' . $this->validator->getError('soal')
+            ])->setStatusCode(400);
+        }
+
+        $img = $this->request->getFile('soal');
+        
+        // Cek apakah file benar-benar diunggah
+        if ($img->isValid() && ! $img->hasMoved())
+        {
+            // Tentukan folder penyimpanan (misalnya: public/uploads/summernote)
+            $filepath = 'img/soal/';
+            
+            // Generate nama file baru yang unik
+            $newName = $img->getRandomName();
+
+            // Pindahkan file ke folder tujuan
+            $img->move(FCPATH . $filepath, $newName);
+            
+            // Kembalikan URL gambar ke Summernote
+            return $this->response->setJSON([
+                'status' => 'success',
+                // URL publik yang dapat diakses oleh browser
+                'url' => base_url($filepath . $newName) 
+            ]);
+        }
+
+        // Gagal menyimpan
+        return $this->response->setJSON([
+            'status' => 'error',
+            'message' => 'Gagal memproses file.'
+        ])->setStatusCode(500);
+    }
+
     public function InsertData()
     {
         $id_jadwal_ujian = $this->request->getPost('id_jadwal_ujian');
@@ -67,7 +116,6 @@ class soal extends BaseController
         $c = $this->request->getPost('c');
         $d = $this->request->getPost('d');
         $e = $this->request->getPost('e');
-        $bobot = $this->request->getPost('bobot');
 
         $validate = $this->validate([
             'soal' =>[
@@ -119,13 +167,6 @@ class soal extends BaseController
                     'required' => '{field} Tidak Boleh Kosong !!!',
                 ]
             ],
-            'bobot' =>[
-                'label' => 'Bobot',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} Tidak Boleh Kosong !!!',
-                ]
-            ],
         ]);
 
         if(!$validate){
@@ -144,7 +185,6 @@ class soal extends BaseController
             'c' => $c,
             'd' => $d,
             'e' => $e,
-            'bobot' => $bobot,
         ];
         $this->ModelSoal->InsertData($data);
 

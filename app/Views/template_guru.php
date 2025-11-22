@@ -41,6 +41,9 @@
     <!-- Favicon -->
     <!-- <link rel="icon" href="" type="image/gif"> -->
 
+    <!-- Summernote -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="<?= base_url('dashboard-template') ?>/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="<?= base_url('dashboard-template') ?>/assets/css/plugins.min.css" />
@@ -301,6 +304,9 @@
 
     <!-- Kaiadmin JS -->
     <script src="<?= base_url('dashboard-template') ?>/assets/js/kaiadmin.min.js"></script>
+
+    <!-- Summernote -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
 
     <script>
       $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
